@@ -1,6 +1,5 @@
 # TKT-001: Setup CI Pipeline
 
-**Status:** open
 **Priority:** high
 **Assignee:** @team
 
