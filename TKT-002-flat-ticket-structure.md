@@ -1,0 +1,25 @@
+---
+status: in_progress
+priority: high
+assignee: jim
+created: 2024-01-25
+---
+
+# Flat Ticket Structure
+
+Implement flat file structure for tickets where status is determined by frontmatter, not directory location.
+
+## Benefits
+
+- Clean git history (status changes are edits, not file moves)
+- No merge conflicts from concurrent status changes
+- Single source of truth (metadata in frontmatter)
+- Files stay in one place forever
+
+## Implementation
+
+- [x] Updated tickets.ts to read status from frontmatter only
+- [x] Updated sidebar to group by metadata status
+- [x] Created useMultiRepoTicketsParsed hook
+- [x] Migrated example tickets to flat structure
+- [ ] Test in browser

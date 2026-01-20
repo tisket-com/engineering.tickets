@@ -1,9 +1,12 @@
-# TKT-000: Initial Setup
+---
+status: resolved
+priority: medium
+assignee: team
+created: 2024-01-15
+resolved: 2024-01-16
+---
 
-**Priority:** medium
-**Assignee:** @team
-
-## Description
+# Initial Setup
 
 Initial repository setup and configuration.
 

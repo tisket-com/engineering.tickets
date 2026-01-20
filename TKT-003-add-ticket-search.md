@@ -1,0 +1,17 @@
+---
+status: open
+priority: medium
+assignee: team
+created: 2024-01-22
+---
+
+# Add Ticket Search
+
+Add search functionality to quickly find tickets.
+
+## Requirements
+
+- [ ] Full-text search across ticket content
+- [ ] Filter by status, priority, assignee
+- [ ] Keyboard shortcut (Cmd+K) to open search
+- [ ] Recent searches

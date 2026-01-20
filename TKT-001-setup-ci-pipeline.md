@@ -1,9 +1,11 @@
-# TKT-001: Setup CI Pipeline
+---
+status: open
+priority: high
+assignee: team
+created: 2024-01-20
+---
 
-**Priority:** high
-**Assignee:** @team
-
-## Description
+# Setup CI Pipeline
 
 Set up continuous integration pipeline for the project.
 
