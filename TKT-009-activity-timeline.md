@@ -1,0 +1,23 @@
+---
+status: open
+priority: medium
+project: ticketing-plan
+created: 2026-01-24
+---
+
+# Add activity timeline to ticket detail
+
+## Overview
+Show a timeline of all activity on a ticket (status changes, assignments, comments).
+
+## Requirements
+- Display chronological list of events
+- Event types: created, status changed, assigned, commented, resolved
+- Extract events from git history
+- Show relative timestamps
+
+## Implementation Notes
+- Use git log to extract ticket file changes
+- Parse commit messages for semantic changes
+- Create `ActivityTimeline` component
+- Integrate with existing `TicketLoader` component
