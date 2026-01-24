@@ -7,7 +7,8 @@ columns:
     tickets: []
   - name: In Progress
     wip_limit: 5
-    tickets: []
+    tickets:
+      - TKT-005
   - name: Review
     wip_limit: 3
     tickets: []
