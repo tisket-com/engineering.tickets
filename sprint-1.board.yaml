@@ -1,0 +1,15 @@
+title: Sprint 1
+description: Initial sprint for kanban board testing
+created: '2026-01-24'
+updated: '2026-01-24'
+columns:
+  - name: Backlog
+    tickets: []
+  - name: In Progress
+    wip_limit: 5
+    tickets: []
+  - name: Review
+    wip_limit: 3
+    tickets: []
+  - name: Done
+    tickets: []
