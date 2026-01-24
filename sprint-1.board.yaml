@@ -6,6 +6,7 @@ columns:
   - name: Backlog
     tickets:
       - TKT-004
+      - TKT-006
   - name: In Progress
     wip_limit: 5
     tickets:
