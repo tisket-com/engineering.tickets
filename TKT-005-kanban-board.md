@@ -8,16 +8,14 @@ created: 2026-01-24
 # Implement Kanban board view
 
 ## Overview
-Add a Kanban-style board view for visualizing tickets by status. Each board is stored as a separate `.board.yaml` file in the repo, following the same pattern as timelines.
+Add a Kanban-style board view for visualizing tickets. Each board is a separate `.board.yaml` file that defines columns and ticket placement. The renderer fetches ticket metadata (status, priority, assignee) from the actual ticket files.
 
 ## Requirements
 - Multiple boards per team repo (one file per board)
-- Column per status (open, in_progress, resolved, closed) or custom columns
-- Drag-and-drop to change status
-- Optional swimlanes by priority, assignee, or project
-- WIP limits per column (configurable)
-- Sprint support with date ranges and velocity tracking
-- Board filtering by labels, assignee, project
+- Drag-and-drop moves ticket ID between columns in the YAML
+- Renderer shows ticket metadata from ticket files
+- Optional WIP limits per column
+- Sprint support with date ranges
 
 ## Board Schema
 
@@ -30,29 +28,27 @@ created: 2026-01-24
 updated: 2026-01-24
 
 columns:
-  - id: backlog
-    name: Backlog
-    statuses: [open]
-  - id: in-progress
-    name: In Progress
-    statuses: [in_progress]
+  - name: Backlog
+    tickets:
+      - TKT-004
+      - TKT-006
+      - TKT-007
+
+  - name: In Progress
     wip_limit: 5
-  - id: review
-    name: Review
-    statuses: [in_progress]
-    labels: [needs-review]
+    tickets:
+      - TKT-002
+      - TKT-005
+
+  - name: Review
     wip_limit: 3
-  - id: done
-    name: Done
-    statuses: [resolved, closed]
+    tickets:
+      - TKT-003
 
-swimlanes:
-  enabled: true
-  group_by: priority  # priority | assignee | project | label
-  collapsed: [low]
-
-filters:
-  exclude_labels: [blocked]
+  - name: Done
+    tickets:
+      - TKT-000
+      - TKT-001
 ```
 
 ### Sprint Board Example
@@ -61,7 +57,6 @@ File: `sprint-12.board.yaml`
 
 ```yaml
 title: Sprint 12
-description: Complete kanban board implementation
 created: 2026-01-20
 updated: 2026-01-24
 
@@ -71,27 +66,33 @@ sprint:
   goal: Complete kanban board implementation
 
 columns:
-  - id: todo
-    name: To Do
-    statuses: [open]
-  - id: doing
-    name: Doing
-    statuses: [in_progress]
-    wip_limit: 3
-  - id: done
-    name: Done
-    statuses: [resolved]
+  - name: To Do
+    tickets:
+      - TKT-005
+      - TKT-006
 
-filters:
-  labels: [sprint-12]
+  - name: Doing
+    wip_limit: 3
+    tickets:
+      - TKT-002
+
+  - name: Done
+    tickets: []
 ```
 
+## Rendering
+
+The UI reads the board YAML, then for each ticket ID:
+1. Fetch ticket file (e.g., `TKT-002-flat-ticket-structure.md`)
+2. Parse frontmatter for status, priority, assignee
+3. Render card with title and metadata
+
+This keeps the board simple (just structure + IDs) while tickets remain the source of truth for their own data.
+
 ## Implementation Notes
-- Use @dnd-kit or similar for drag-and-drop
-- Create `KanbanBoard` component with board selector dropdown
-- Glob for `*.board.yaml` files to discover boards
-- Parse and validate against schema on load
-- Changes to board config require git commit (through MCP or UI)
-- Add board management UI for creating/editing boards
-- Sprint boards show burndown/velocity in header
-- Consider adding `default: true` field or using alphabetical first as default
+- Use @dnd-kit for drag-and-drop
+- On drop, update the YAML and commit via MCP
+- Glob `*.board.yaml` to discover boards
+- Show WIP limit warnings when exceeded
+- Sprint boards show burndown in header
+- Consider: sync ticket status when moved to "Done" column?
