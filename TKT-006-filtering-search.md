@@ -1,0 +1,24 @@
+---
+status: open
+priority: high
+project: ticketing-plan
+created: 2026-01-24
+---
+
+# Add filtering and search capabilities
+
+## Overview
+Implement comprehensive filtering and full-text search for tickets.
+
+## Requirements
+- Full-text search across ticket title and content
+- Filter by: status, priority, assignee, labels, date range, project
+- Combine multiple filters
+- Save filter presets
+- URL-based filters for shareable links
+
+## Implementation Notes
+- Add filter UI component with dropdowns/pills
+- Implement client-side filtering for parsed tickets
+- Use URL search params for filter state
+- Add saved filters to sidebar
