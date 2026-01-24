@@ -1,0 +1,23 @@
+---
+status: open
+priority: medium
+project: ticketing-plan
+created: 2026-01-24
+---
+
+# Implement due dates and time tracking
+
+## Overview
+Add due date support and optional time tracking for tickets.
+
+## Requirements
+- Add `dueDate?: string` field to ticket frontmatter
+- Add `estimatedHours?: number` for effort estimation
+- Highlight overdue tickets in UI
+- Show due date in ticket cards and metadata panel
+- Sort/filter by due date
+
+## Implementation Notes
+- Update ticket interfaces and parsing
+- Add due date display with visual indicators (overdue = red, soon = yellow)
+- Consider relative date display ("due in 3 days")
