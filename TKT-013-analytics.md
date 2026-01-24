@@ -1,0 +1,24 @@
+---
+status: open
+priority: low
+project: ticketing-plan
+created: 2026-01-24
+---
+
+# Add analytics dashboard for tickets
+
+## Overview
+Provide analytics and metrics for ticket management.
+
+## Requirements
+- Ticket velocity chart (created vs resolved over time)
+- Average resolution time by team/priority
+- Tickets by status distribution (pie/donut chart)
+- Assignee workload visualization
+- Trend indicators
+
+## Implementation Notes
+- Calculate metrics from ticket data
+- Use charting library (recharts or similar)
+- Create `TicketAnalytics` component
+- Add as tab or separate page in workspace
