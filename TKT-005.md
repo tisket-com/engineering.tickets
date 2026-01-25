@@ -1,5 +1,5 @@
 ---
-status: open
+status: resolved
 priority: high
 project: ticketing-plan
 created: 2026-01-24
