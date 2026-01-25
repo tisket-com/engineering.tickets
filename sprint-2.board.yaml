@@ -8,5 +8,4 @@ sprint:
   goal: Ship Kanban board and implement ticket search
 tickets:
   - TKT-014
-  - TKT-005
   - TKT-003
